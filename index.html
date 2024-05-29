@@ -4,93 +4,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/favicon.ico">
-    <title>Password Generator | CodeHelp </title>
-    <!-- Fonts -->
+    <title>Weather APP | CodeHelp </title>
+    <!-- favicon -->
+    <link rel="icon" href="./assets/favicon.ico">
+    <!-- Font Family  -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;600&display=swap" rel="stylesheet" />
-    <!-- External CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-    <!-- Top Level Wrapper Div -->
-    <div id="wrapper">
-        <div class="container">
-            <!-- heading -->
-            <h1>Password Generator</h1>
-            <!-- First Div (Text & Copy icon) -->
-            <div class="display-container">
 
-                <!-- input (readonly, password text ke liye) -->
-                <input readonly placeholder="password" id="display" value="" data-passwordDisplay>
-                <label for="display"></label>
-                <button class="copy-btn" copy-btn>
-                <!-- upar wala text jo visible hoga, copy karne par  -->
-                    <span class="tooltip" data-copyMsg></span>
-                    <!-- copy icon -->
-                    <img src="./assets/copy.svg" height="25px" width="25px" alt="copy-icon">
-           </button>
+    <!-- wrapper container -->
+    <div class="wrapper">
+
+        <!-- heading -->
+        <h1>Weather App</h1>
+        <!-- tab container -->
+        <div class="tab-container">
+            <p class="tab" userTab>Your Weather</p>
+            <p class="tab" searchTab>Search Weather</p>
+        </div>
 
 
+        <div class="weather-container">
+            <!--grant location access wala UI -->
+            <div class="grant-access-container sub-container">
+                <!-- image -->
+                <img src="./assets/location.png" height="80px" width="80px" loading="lazy" alt="locationIcon">
+                <!-- text -->
+                <p>Grant Location Access</p>
+                <!-- text -->
+                <p>Allow Access To Get Weather Information</p>
+                <!-- grant access button -->
+                <button class="btn" grant-access-btn>Grant Access</button>
             </div>
 
-            <!-- Second Div -->
-            <div class="input-container">
-                <!-- text div -->
-                <div class="length-container">
-                    <p>Password Length</p>
-                    <!-- initially, length to 10 (uska logic JS mei likha hai) -->
-                    <p password-data></p>
-                </div>
+            <!-- search weather wala UI -->
+            <!-- form -->
+            <form class="search-form-container search-parameter">
+                <!-- search input -->
+                <input type="text" placeholder="Search for city ..." id="citySearch" search-city-input>
+                <!-- <label for="citySearch"></label> -->
+                <!-- submit button -->
+                <button type="submit" class="btn" data-search-btn>
+                        <!-- search img inside button -->
+                        <img src= "./assets/search.png" height="20px" width="20px" loading="lazy" alt="searchButton">
+                </button>
+            </form>
 
-                <!-- slider div -->
-                <div class="slidecontainer">
-                    <label for="myRange"></label>
-                    <input type="range" min="1" max="20" step="1" class="slider" id="myRange" value="" input-slider>
-                </div>
+            <!-- loading gif wala UI -->
+            <div class="sub-container loading-screen-container">
+                <!-- loading gif -->
+                <img src="./assets/loading.gif" alt="loadingIcon" height="150px" width="150px">
+                <!-- text -->
+                <p>Loading</p>
+            </div>
 
-                <!-- checkbox -->
-                <!-- Uppercase Checkbox  -->
-                <div class="check">
-                    <input type="checkbox" id="upperCase">
-                    <label for="upperCase">Include Uppercase Letters</label>
+            <!-- user info container -->
+            <!-- this container will container all the UI's (present saare UI rahege, bss unko hide kar dege) -->
+            <div class="sub-container user-info-container">
+                <!-- city name div -->
+                <div class="city-name">
+                    <!-- cityName, dynamic (inserted using js) -->
+                    <p data-cityName></p>
+                    <!-- city flag icon, dynamic (inserted using js) -->
+                    <img src="" alt="" data-countryIcon>
                 </div>
-                <!-- Lowercase Checkbox  -->
-                <div class="check">
-                    <input type="checkbox" id="lowerCase">
-                    <label for="lowerCase">Include Lowercase Letters</label>
-                </div>
-                <!-- Numbers Checkbox  -->
-                <div class="check">
-                    <input type="checkbox" id="numbers">
-                    <label for="numbers">Include Numbers</label>
-                </div>
-                <!-- Symbols Checkbox -->
-                <div class="check">
-                    <input type="checkbox" id="symbols">
-                    <label for="symbols">Include Symbols</label>
-                </div>
+                <!-- weather description,  dynamic (inserted using js) -->
+                <p data-weatherDesc></p>
+                <!-- weather image icon (dynamic, inserted using js) -->
+                <img src="" alt="" data-weatherIcon>
+                <!-- temperature wala text (dynamic, inserted using js) -->
+                <p data-temp></p>
+                <!-- weather info container  -->
+                <div class="weather-info-container">
+                    <!-- windspeed container -->
+                    <div class="parameter">
+                        <!-- wind speed image (static) -->
+                        <img src="./assets/wind.png" alt="windspeed">
+                        <p>Windspeed</p>
+                        <!-- Windspeed data (dynamic) -->
+                        <p data-windspeed></p>
+                    </div>
+                    <!-- humidity container -->
+                    <div class="parameter">
+                        <!--  humidity image (static) -->
+                        <img src="./assets/humidity.png" alt="humidity" humidityImage>
+                        <p>Humidity</p>
+                        <!-- humidity data (dynamic, inserted using js) -->
+                        <p data-humidity></p>
+                    </div>
+                    <!-- clouds container -->
+                    <div class="parameter">
+                        <!-- clouds image (static) -->
+                        <img src="./assets/cloud.png" alt="clouds" cloudImage>
+                        <p>Clouds</p>
+                        <!-- clouds data (dynamic, inserted using js) -->
+                        <p data-cloud></p>
+                    </div>
 
-                <!-- strength div -->
-                <div class="strength-container">
-                    <!-- text -->
-                    <p>Strength</p>
-                    <!-- circular div (css) -->
-                    <div class="indicator" strength-indicator></div>
                 </div>
             </div>
 
-            <!-- button -->
-            <button class="generate-btn">Generate Password</button>
+            <!-- HTTPS Error wala UI -->
+            <div data-httpError-icon>
+                <img src="" alt="">
+                <p>OOPS! NOT FOUND</p>
+            </div>
+
+
 
         </div>
-        <!-- container div ends here -->
     </div>
-    <!-- wrapper div ends here -->
-    <!-- External JS -->
-    <script src="./script.js"></script>
+
+
+
+
+    <!-- external JS -->
+    <script src='./script.js'></script>
 </body>
 
 </html>
